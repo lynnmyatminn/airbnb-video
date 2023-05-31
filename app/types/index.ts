@@ -7,6 +7,9 @@ export type SafeUser = Omit<
   createdAt: string;
   updatedAt: string;
   emailVerified: string | null;
+  // createdAt: createdAt.toISOString();
+  //     updatedAt: updatedAt.toISOString();
+  //     emailVerified: emailVerified?.toISOString();
 };
 
 export type SafeListing = Omit<Listing, 'createdAt'> & {
