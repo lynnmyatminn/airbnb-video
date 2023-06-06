@@ -23,12 +23,14 @@ export default async function getCurrentUser() {
       return null;
     }
 
-    return {
+    const safeUser = {
       ...currentUser,
       createdAt: currentUser.createdAt.toISOString(),
       updatedAt: currentUser.updatedAt.toISOString(),
       emailVerified: currentUser.emailVerified?.toISOString(),
     };
+
+    return safeUser;
   } catch (error) {
     return null;
   }

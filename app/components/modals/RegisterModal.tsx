@@ -36,7 +36,9 @@ const RegisterModal = () => {
     axios
       .post('/api/register', data)
       .then(() => {
+        toast.success('Successfully Registered!');
         registerModal.onClose();
+        loginModal.onOpen();
       })
       .catch((error) => {
         console.log(error);
@@ -53,28 +55,28 @@ const RegisterModal = () => {
   }, [loginModal, registerModal]);
 
   const bodyContent = (
-    <div className="flex flex-col gap-4">
-      <Heading title="Welcome to Airbnb" subtitle="Create an account!" />
+    <div className='flex flex-col gap-4'>
+      <Heading title='Welcome to Airbnb' subtitle='Create an account!' />
       <Input
-        id="email"
-        label="Email"
+        id='email'
+        label='Email'
         disabled={isLoading}
         register={register}
         errors={errors}
         required
       />
       <Input
-        id="name"
-        label="Name"
+        id='name'
+        label='Name'
         disabled={isLoading}
         register={register}
         errors={errors}
         required
       />
       <Input
-        id="password"
-        label="Password"
-        type="password"
+        id='password'
+        label='Password'
+        type='password'
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -84,11 +86,11 @@ const RegisterModal = () => {
   );
 
   const footerContent = (
-    <div className="flex flex-col gap-4 mt-3">
+    <div className='flex flex-col gap-4 mt-3'>
       <hr />
       <Button
         outline
-        label="Continue with Google"
+        label='Continue with Google'
         icon={FcGoogle}
         onClick={() => {
           signIn('google');
@@ -96,31 +98,31 @@ const RegisterModal = () => {
       />
       <Button
         outline
-        label="Continue with Github"
+        label='Continue with Github'
         icon={AiFillGithub}
         onClick={() => signIn('github')}
       />
       <div
-        className="
+        className='
       text-neutral-500
       text-center
       mt-4
       font-light
-      "
+      '
       >
         <div
-          className="
+          className='
         flex flex-row gap-2 items-center justify-center
-        "
+        '
         >
           <div>Already have an account?</div>
           <div
             onClick={toggle}
-            className="
+            className='
           text-neutral-800
           cursor-pointer
           hover:underline
-          "
+          '
           >
             Log in
           </div>
@@ -133,8 +135,8 @@ const RegisterModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={registerModal.isOpen}
-      title="Register"
-      actionLabel="Continue"
+      title='Register'
+      actionLabel='Continue'
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
